@@ -10,6 +10,8 @@ import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import ImageResize from "tiptap-extension-resize-image";
+import Underline from '@tiptap/extension-underline';
+import Link from '@tiptap/extension-link';
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -57,6 +59,12 @@ export const Editor = () => {
       TableHeader,
       Image,
       ImageResize,
+      Underline,
+      Link.configure({
+      openOnClick: false,
+      autolink: false,
+      linkOnPaste: true,
+    }),
     ],
     content: `
         <table>
