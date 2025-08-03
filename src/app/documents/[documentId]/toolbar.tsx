@@ -1,5 +1,11 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import { LucideIcon, Undo2Icon } from "lucide-react";
+import { useEditorStore } from "@/store/use-editor-store";
+import { use } from "react";
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -26,6 +32,9 @@ const ToolbarButton = ({
 };
 
 const Toolbar = () => {
+  const { editor } = useEditorStore();
+  console.log("Toolbar editor: ", { editor });
+  
   const sections: {
     label: string;
     icon: LucideIcon;
@@ -33,12 +42,15 @@ const Toolbar = () => {
     isActive?: boolean;
   }[][] = [
     [
-        {
-            label: "Undo",
-            icon : Undo2Icon,
-            onClick: () => console.log("Undo clicked"),
-
+      {
+        label: "Undo",
+        icon: Undo2Icon,
+        onClick: () => {
+          if (editor) {
+            editor.chain().focus().undo().run();
+          }
         },
+      },
     ],
   ];
 
