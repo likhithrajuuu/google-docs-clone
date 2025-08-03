@@ -10,8 +10,10 @@ import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import ImageResize from "tiptap-extension-resize-image";
-import Underline from '@tiptap/extension-underline';
-import Link from '@tiptap/extension-link';
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
 
 import { useEditorStore } from "@/store/use-editor-store";
 
@@ -25,22 +27,22 @@ export const Editor = () => {
       setEditor(null);
     },
     onUpdate({ editor }) {
-      setEditor(null); 
+      setEditor(null);
     },
-    onSelectionUpdate({ editor}){
-        setEditor(editor);
+    onSelectionUpdate({ editor }) {
+      setEditor(editor);
     },
-    onTransaction({ editor }){
-        setEditor(editor);
+    onTransaction({ editor }) {
+      setEditor(editor);
     },
-    onFocus({ editor }){
-        setEditor(editor);
+    onFocus({ editor }) {
+      setEditor(editor);
     },
-    onBlur({ editor }){
-        setEditor(editor);
+    onBlur({ editor }) {
+      setEditor(editor);
     },
-    onContentError({ editor }){
-        setEditor(editor);
+    onContentError({ editor }) {
+      setEditor(editor);
     },
     editorProps: {
       attributes: {
@@ -61,10 +63,12 @@ export const Editor = () => {
       ImageResize,
       Underline,
       Link.configure({
-      openOnClick: false,
-      autolink: false,
-      linkOnPaste: true,
-    }),
+        openOnClick: false,
+        autolink: false,
+        linkOnPaste: true,
+      }),
+      FontFamily,
+      TextStyle,
     ],
     content: `
         <table>

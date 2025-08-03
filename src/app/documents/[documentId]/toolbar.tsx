@@ -7,10 +7,12 @@ import {
   BoldIcon,
   ItalicIcon,
   LinkIcon,
+  ListTodoIcon,
   LucideIcon,
   MessageSquarePlusIcon,
   PrinterIcon,
   Redo2Icon,
+  RemoveFormattingIcon,
   SearchIcon,
   SpellCheck,
   UnderlineIcon,
@@ -18,8 +20,32 @@ import {
 } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { use } from "react";
-// import { ZoomDropdown } from "./zoomdropdown";
 import { Separator } from "@/components/ui/separator";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const FontFamilyButton = () => {
+  const { editor } = useEditorStore();
+
+  const fonts = [
+    {
+      label: "Arial",
+      value: "Arial",
+    },
+    {
+      label: "Times New Roman",
+      value: "Times New Roman",
+    },
+    {
+      label: "Courier New",
+      value: "Courier New",
+    },
+  ]
+}
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -143,6 +169,17 @@ const Toolbar = () => {
         icon: MessageSquarePlusIcon,
         onClick: () => console.log("TODO: Comment"),
         isActive: false,
+      },
+      {
+        label: "List Todo",
+        icon: ListTodoIcon,
+        onClick: () => editor?.chain().focus().toggleTaskList().run(),
+        isActive: editor?.isActive("taskList"),
+      },
+      {
+        label: "Remove Formatting",
+        icon: RemoveFormattingIcon,
+        onClick: () => editor?.chain().focus().unsetAllMarks().run(),
       },
     ]
   ];
