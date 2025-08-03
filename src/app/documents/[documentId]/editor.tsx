@@ -4,7 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
-
+import Image from '@tiptap/extension-image'
 import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
@@ -27,6 +27,7 @@ export const Editor = () => {
       TableRow,
       TableCell,
       TableHeader,
+      Image,
     ],
     content: `
         <table>
