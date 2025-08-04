@@ -45,6 +45,14 @@ const FontFamilyButton = () => {
       label: "Courier New",
       value: "Courier New",
     },
+    {
+      label: "Verdana",
+      value: "Verdana",
+    },
+    {
+      label: "Georgia",
+      value: "Georgia"
+    },
   ];
 
   return (
