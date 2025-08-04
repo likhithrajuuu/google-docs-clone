@@ -59,11 +59,14 @@ const FontFamilyButton = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
         {fonts.map(({ label, value }) => (
-          <button key={value} className={cn(
+          <button 
+          key={value} 
+          className={cn(
             "flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80",
             editor?.getAttributes("textStyle").fontFamily === value && "bg-neutral-200/80"
           )}
           style={{ fontFamily: value }}
+          onClick = {() => editor?.chain().focus().setFontFamily(value).run()}
           >
             <span className="text-sm">{label}</span>
           </button>
