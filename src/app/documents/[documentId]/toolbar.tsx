@@ -73,7 +73,7 @@ const HeadingLevelButton = () => {
       }
     }
 
-    return "Normakl Text";
+    return "Normal Text";
   };
 
   return (
