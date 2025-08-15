@@ -54,6 +54,11 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+        Link.configure({
+            openOnClick :false,
+            autolink: true,
+            defaultProtocol: "https"
+        }),
       TaskList,
       TaskItem.configure({ nested: true }),
       Table.configure({ resizable: true }),

@@ -88,6 +88,15 @@ body {
 }
 
 .tiptap{
+    /*Link Styles*/
+    a {
+        @apply text-blue-600
+        cursor-pointer;
+
+        &:hover {
+            @apply underline text-purple-700;
+        }
+    }
 
   /*Image-Styling*/
    img {
@@ -251,3 +260,5 @@ body {
       margin: 0;
     }
   }
+
+
