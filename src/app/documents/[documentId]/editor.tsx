@@ -17,6 +17,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import { Color } from '@tiptap/extension-color';
 import Highlight from "@tiptap/extension-highlight";
 import { useEditorStore } from "@/store/use-editor-store";
+import { FontSizeExtension } from "@/extensions/font-size";
 
 export const Editor = () => {
   const { setEditor } = useEditorStore();
@@ -65,6 +66,7 @@ export const Editor = () => {
       TableRow,
       TableCell,
       TableHeader,
+        FontSizeExtension,
         Highlight.configure({
             multicolor: true,
         }),
