@@ -116,6 +116,16 @@ const Marker = ({
      onDoubleClick = {onDoubleClick}
     >
         <FaCaretDown className="absolute left-1/2 top-0 h-full fill-blue-500 transform -translate-x-1/2 group-hover:fill-blue-600"/>
+        <div className="absolute left-1/2 top-4 transform -translate-x-1/2" 
+            style={{
+                height: "100vh",
+                width: "1px",
+                transform: "scaleX(0.5)",
+                backgroundColor: "#3b72f6",
+                display: isDragging ? "block" : "none",
+
+            }}
+        />
     </div>
     );
 };
