@@ -44,15 +44,15 @@ export const Navbar = () => {
         }
     };
 
-    return(
+    return (
         <header className="flex items-center justify-between p-2 px-4 border-b">
             <div className="flex gap-2 items-center">
-                <Link href = "/">
-                    <Image src="/logo.svg" alt="Logo" width={32} height={32}/>
+                <Link href="/">
+                    <Image src="/logo.svg" alt="Logo" width={32} height={32} />
                 </Link>
                 <div className="flex flex-col">
                     {isEditing ? (
-                        <input 
+                        <input
                             ref={inputRef}
                             type="text"
                             value={inputValue}
@@ -66,13 +66,27 @@ export const Navbar = () => {
                     )}
                     <div className="flex gap-x-2 text-xs text-muted-foreground">
                         <DropdownMenu>
-                            <DropdownMenuTrigger className="hover:bg-accent p-1 rounded-sm cursor-pointer">File</DropdownMenuTrigger>
-                            <DropdownMenuContent>
-                                <DropdownMenuItem>New</DropdownMenuItem>
-                                <DropdownMenuItem>Save</DropdownMenuItem>
-                                <DropdownMenuItem>Save As</DropdownMenuItem>
-                                <DropdownMenuItem>Export</DropdownMenuItem>
-                                <DropdownMenuItem>Print</DropdownMenuItem>
+                            <DropdownMenuTrigger className="px-2 py-1 text-sm font-normal text-gray-800 hover:bg-gray-100 rounded-sm cursor-pointer">
+                                File
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent
+                                className="w-40 bg-white shadow-md border border-gray-200 rounded-sm p-1"
+                            >
+                                <DropdownMenuItem className="px-3 py-1.5 text-sm text-gray-800 hover:bg-blue-50 rounded-sm cursor-pointer">
+                                    New
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="px-3 py-1.5 text-sm text-gray-800 hover:bg-blue-50 rounded-sm cursor-pointer">
+                                    Save
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="px-3 py-1.5 text-sm text-gray-800 hover:bg-blue-50 rounded-sm cursor-pointer">
+                                    Save As
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="px-3 py-1.5 text-sm text-gray-800 hover:bg-blue-50 rounded-sm cursor-pointer">
+                                    Export
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="px-3 py-1.5 text-sm text-gray-800 hover:bg-blue-50 rounded-sm cursor-pointer">
+                                    Print
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                         <DropdownMenu>
