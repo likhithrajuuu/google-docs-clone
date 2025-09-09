@@ -6,7 +6,7 @@ import {
     AlignLeftIcon, AlignRightIcon,
     BoldIcon,
     ChevronDownIcon, HighlighterIcon,
-    ItalicIcon, LinkIcon, ListCollapseIcon, ListIcon, ListOrderedIcon,
+    ItalicIcon, Link2, LinkIcon, ListCollapseIcon, ListIcon, ListOrderedIcon,
     ListTodoIcon,
     LucideIcon,
     MessageSquarePlusIcon, MinusIcon, PlusIcon,
@@ -198,7 +198,7 @@ const LinkButton = () => {
                 <button
                     className="h-7 min-w-7 shrink-0 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm "
                 >
-                    <LinkIcon className="size-4"/>
+                    <Link2 className="size-4"/>
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-2.5 flex items-center gap-x-2">

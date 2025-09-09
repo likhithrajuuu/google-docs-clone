@@ -38,15 +38,15 @@ export const Navbar = () => {
                                 <MenubarContent className="print:hidden">
                                     <MenubarItem>
                                         <FilePlusIcon className="size-4 mr-2"/>
-                                        New Document
+                                        New Document<MenubarShortcut>⌘N</MenubarShortcut>
                                     </MenubarItem>
                                     <MenubarItem>
                                         <FileIcon className="size-4 mr-2" />
-                                        Open
+                                        Open<MenubarShortcut>⌘O</MenubarShortcut>
                                     </MenubarItem>
                                     <MenubarItem>
                                         <Copy className="size-4 mr-2" />
-                                        Make a copy
+                                        Make a copy<MenubarShortcut>⌘D</MenubarShortcut>
                                     </MenubarItem>
                                     <MenubarSeparator />
                                     <MenubarSub>
@@ -131,7 +131,7 @@ export const Navbar = () => {
                                     </MenubarItem>
                                     <MenubarItem>
                                         <PrinterIcon className="size-4 mr-2"/>
-                                        Print
+                                        Print<MenubarShortcut>⌘P</MenubarShortcut>
                                     </MenubarItem>
                                 </MenubarContent>
                             </MenubarMenu>
