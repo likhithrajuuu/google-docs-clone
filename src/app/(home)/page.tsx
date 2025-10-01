@@ -1,5 +1,6 @@
-import Link from "next/link";
+// import Link from "next/link";
 import {Navbar} from "@/app/(home)/navbar";
+import {TemplateGallery} from "@/app/(home)/template-gallery";
 
 const home = () => {
   return (
@@ -8,7 +9,7 @@ const home = () => {
             <Navbar />
         </div>
       <div className="mt-16">
-          Click <Link href="/documents/123"><span className="text-blue-500 underline">&nbsp;Here</span></Link> to go to documents id
+          <TemplateGallery />
       </div>
     </div>
   )
