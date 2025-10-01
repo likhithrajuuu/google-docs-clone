@@ -28,8 +28,11 @@ import {
     Undo2Icon
 } from "lucide-react";
 import {BsFilePdf} from "react-icons/bs";
+import {useEditorStore} from "@/store/use-editor-store";
 
 export const Navbar = () => {
+    const { editor } = useEditorStore();
+    
     return(
         <nav className="flex items-center justify-between">
             <div className="flex gap-4 items-center">
