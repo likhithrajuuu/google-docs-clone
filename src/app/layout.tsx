@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import {NuqsAdapter} from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
   title: "Google Docs",
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body
         className={inter.className}
       >
+        <NuqsAdapter>
         {children}
+        </NuqsAdapter>
       </body>
     </html>
   );
