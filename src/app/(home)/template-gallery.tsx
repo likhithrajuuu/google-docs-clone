@@ -23,7 +23,7 @@ export const TemplateGallery = () => {
                                     "aspect-[3/4] flex flex-col gap-y-2.5",
                                     isCreating && "pointer-events-none opacity-50"
                                 )}>
-                                    <button disabled={isCreating} onClick={()=> {}} style={{backgroundImage: `url(${template.imageUrl}`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}} className="size-full hover:border-blue-500 rounded-sm border hover:bg-blue-50 transition flex flex-col items-center justify-center gap-y-4  bg-white" />
+                                    <button disabled={isCreating} onClick={()=> {}} style={{backgroundImage: `url(${template.imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}} className="size-full hover:border-blue-500 rounded-sm border hover:bg-blue-50 transition flex flex-col items-center justify-center gap-y-4  bg-white" />
                                     <p className="text-sm font-medium truncate">
                                         {template.label}
                                     </p>
