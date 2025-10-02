@@ -1,17 +1,18 @@
 "use client";
 import { Navbar } from "@/app/(home)/navbar";
 import { TemplateGallery } from "@/app/(home)/template-gallery";
-import { useQuery } from "convex/react";
+import { usePaginatedQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import {FullScreenLoader} from "@/components/full-screen-loader";
+import {DocumentsTable} from "@/app/(home)/documents-table";
 
 const Home = () => {
-    const documents = useQuery(api.documents.get);
+    const {results,
+        status,
+        loadMore } = usePaginatedQuery(api.documents.get, {}, { initialNumItems: 5});
 
-    if (!documents) {
-        return (
-            <FullScreenLoader label="Please Wait"/>
-        );
+    if (status === "LoadingFirstPage") {
+        return <FullScreenLoader />
     }
 
     return (
@@ -70,17 +71,10 @@ const Home = () => {
             <section id="documents" className="px-6 sm:px-12 lg:px-24 py-16 bg-white">
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">My Documents</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {documents.map((document) => (
-                        <div
-                            key={document._id}
-                            className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer"
-                        >
-                            <h3 className="font-semibold text-lg text-gray-800">{document.title}</h3>
-                            {document.initialContent && (
-                                <p className="text-gray-500 mt-2 line-clamp-3">{document.initialContent}</p>
-                            )}
-                        </div>
-                    ))}
+                    <DocumentsTable
+                        documents = {results}
+                        loadMore = {loadMore}
+                        status = {status}/>
                 </div>
             </section>
         </div>

@@ -1,24 +1,36 @@
 import {mutation, query} from "./_generated/server";
-import {ConvexError, v} from "convex/values";
+import { paginationOptsValidator} from "convex/server";
+import { v } from "convex/values";
+import { ConvexError } from "convex/values";
 
 export const create = mutation({
-    args: { title : v.optional(v.string()), initialContent : v.optional(v.string()), ownerId : v.string(), roomId : v.optional(v.string()), organisationId : v.optional(v.string())},
-    handler : async(ctx, args) => {
-        const user = await ctx.auth.getUserIdentity();
-        if(!user) {
-            throw new ConvexError("Unauthorized");
-        }
-
-        const documentId = await ctx.db.insert("documents", {
-            title: args.title ?? "Untitled Document",
-            ownerId: user.subject,
-            initialContent: args.initialContent,
-        });
-        return documentId;
+  // The fix is here: `ownerId` has been removed from the arguments.
+  args: {
+    title: v.optional(v.string()),
+    initialContent: v.optional(v.string()),
+    roomId: v.optional(v.string()),
+    organisationId: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const user = await ctx.auth.getUserIdentity();
+    if (!user) {
+      throw new ConvexError("Unauthorized");
     }
-})
+
+    const documentId = await ctx.db.insert("documents", {
+      title: args.title ?? "Untitled Document",
+      ownerId: user.subject, // The owner is set securely here on the backend.
+      initialContent: args.initialContent,
+      roomId: args.roomId,
+      organisationId: args.organisationId,
+    });
+    return documentId;
+  },
+});
+
 export const get = query({
-    handler: async (ctx) => {
-        return await ctx.db.query("documents").collect();
+    args : { paginationOpts : paginationOptsValidator},
+    handler: async (ctx, args) => {
+        return await ctx.db.query("documents").paginate(args.paginationOpts);
     },
 })
