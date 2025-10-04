@@ -3,8 +3,6 @@ import {PaginationStatus} from "convex/react";
 
 import {
     Table,
-    TableBody,
-    TableCell,
     TableHead,
     TableHeader,
     TableRow,
@@ -18,8 +16,8 @@ interface DocumentsTableProps {
 }
 export const DocumentsTable = ({
     documents,
-    loadMore,
-    status,} : DocumentsTableProps) => {
+    // loadMore,
+     } : DocumentsTableProps) => {
     return(
         <div className="max-w-screen-xl mx-auto px-16 py-6 flex flex-col">
             {documents === "undefined" ? (

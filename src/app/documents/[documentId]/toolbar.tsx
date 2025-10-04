@@ -2,11 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import {
-    AlignCenter, AlignCenterIcon, AlignJustifyIcon,
+    AlignCenterIcon, AlignJustifyIcon,
     AlignLeftIcon, AlignRightIcon,
     BoldIcon,
     ChevronDownIcon, HighlighterIcon,
-    ItalicIcon, Link2, LinkIcon, ListCollapseIcon, ListIcon, ListOrderedIcon,
+    ItalicIcon, Link2, ListCollapseIcon, ListIcon, ListOrderedIcon,
     ListTodoIcon,
     LucideIcon,
     MessageSquarePlusIcon, MinusIcon, PlusIcon,
@@ -30,7 +30,6 @@ import { type Level } from "@tiptap/extension-heading";
 import {useState} from "react";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import {LineHeightExtension} from "@/extensions/line-height";
 
 const AlignButton = () => {
     const {editor}  = useEditorStore();
