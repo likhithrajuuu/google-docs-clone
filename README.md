@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Google Docs Clone
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-blue?logo=react)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-teal?logo=tailwind-css)](https://tailwindcss.com/)
+[![Convex](https://img.shields.io/badge/Convex-purple?logo=vercel)](https://www.convex.dev/)
 
-First, run the development server:
+A **real-time collaborative document editor** inspired by Google Docs — built using **Next.js**, **React.js**, **Convex**, **Tiptap**, and **Shadcn/UI**.  
+This project allows multiple users to **create, edit, and share documents** with seamless live synchronization, autosave, and a modern, responsive interface.
+
+---
+
+## 🌟 Demo
+
+Check out the live demo here: [Live Demo](https://your-demo-link.com)  
+
+![Demo GIF](./assets/demo.gif)  
+*Collaborative editing and real-time updates in action*
+
+---
+
+## ✅ Features
+
+- ⚡ **Real-time Collaboration**: Multiple users can edit documents simultaneously  
+- 💾 **Auto-Save**: Edits are saved instantly using Convex’s reactive backend  
+- 🖋️ **Rich Text Editing**: Powered by Tiptap (ProseMirror-based editor)  
+- 🧭 **Modern UI**: Designed using Shadcn/UI and Tailwind CSS  
+- 🔐 **Authentication & Document Sharing**: Secure access control  
+- 📂 **Document Management**: Create, rename, and organize your documents effortlessly  
+- 📄 **Templates**: Start quickly with pre-built templates  
+
+---
+
+## 🧩 Tech Stack
+
+| Category       | Technology |
+|----------------|------------|
+| **Frontend**   | Next.js, React.js, TypeScript |
+| **Backend**    | Convex (Real-time backend + Database) |
+| **Editor**     | Tiptap |
+| **UI Library** | Shadcn/UI |
+| **Styling**    | Tailwind CSS |
+| **Icons**      | Lucide React |
+
+---
+
+## 🏗️ Installation
+
+Follow these steps to set up the project locally:
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/google-docs-clone.git
+
+# 2. Navigate into the project directory
+cd google-docs-clone
+
+# 3. Install dependencies
+npm install
+
+# 4. Set up Convex
+npx convex dev
+
+# 5. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
