@@ -45,22 +45,9 @@ Check out the live demo here: [Live Demo](https://your-demo-link.com)
 
 ---
 
-## 🏗️ Installation
+## 🔧 Environment Variables
 
-Follow these steps to set up the project locally:
+Create a `.env.local` file in the project root and add:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/google-docs-clone.git
-
-# 2. Navigate into the project directory
-cd google-docs-clone
-
-# 3. Install dependencies
-npm install
-
-# 4. Set up Convex
-npx convex dev
-
-# 5. Run the development server
-npm run dev
+NEXT_PUBLIC_CONVEX_URL=your_convex_backend_url
