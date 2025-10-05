@@ -2,12 +2,13 @@ import {Doc} from "../../../convex/_generated/dataModel";
 import {PaginationStatus} from "convex/react";
 
 import {
-    Table,
+    Table, TableBody, TableCell,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
 import {LoaderIcon} from "lucide-react";
+import {DocumentRow} from "@/app/(home)/document-row";
 
 interface DocumentsTableProps {
     documents: Doc<"documents">[] | "undefined";
@@ -30,10 +31,25 @@ export const DocumentsTable = ({
                         <TableRow className="hover:bg-transparent border-none">
                             <TableHead>Name</TableHead>
                             <TableHead>&nbsp;</TableHead>
-                            <TableHead>Shared</TableHead>
-                            <TableHead>Created At</TableHead>
+                            <TableHead className="hidden md:table-cell">Shared</TableHead>
+                            <TableHead className="hidden md:table-cell">Created At</TableHead>
                         </TableRow>
                     </TableHeader>
+                    {documents.length === 0 ? (
+                        <TableBody>
+                            <TableRow className="hover:bg-transparent">
+                                <TableCell colSpan={4} className="h-24 text-center">
+                                    No Documents Found
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    ) : (
+                        <TableBody>
+                            {documents.map((document) => (
+                                <DocumentRow key={document._id} document = {document} />
+                            ))}
+                        </TableBody>
+                    )}
                 </Table>
             )}
         </div>

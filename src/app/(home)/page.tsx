@@ -70,12 +70,10 @@ const Home = () => {
             {/* User Documents */}
             <section id="documents" className="px-6 sm:px-12 lg:px-24 py-16 bg-white">
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">My Documents</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <DocumentsTable
                         documents = {results}
                         loadMore = {loadMore}
                         status = {status}/>
-                </div>
             </section>
         </div>
     );
