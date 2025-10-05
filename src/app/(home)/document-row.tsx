@@ -4,18 +4,25 @@ import {SiGoogledocs} from "react-icons/si";
 import {Building2Icon, CircleUserIcon} from "lucide-react";
 import {format} from "date-fns";
 import {DocumentMenu} from "@/app/(home)/document-menu";
+import {useRouter} from "next/navigation";
 
 interface DocumentRowProps {
     document: Doc<"documents">
 }
 
 export const DocumentRow = ({ document } : DocumentRowProps) => {
+    const router = useRouter();
+
     const onNewTabClick = () => {
         window.open(`/documents/${document._id}`, "_blank");
     };
 
+    const onRowClick = (id : string) => {
+        router.push(`/documents/${id}`);
+    }
+
     return (
-    <TableRow className="cursor-pointer">
+    <TableRow className="cursor-pointer" onClick={() => router.push(`/documents/${document._id}`)}>
         <TableCell className="w-[50px]">
             <SiGoogledocs className="size-6 fill-blue-500"/>
         </TableCell>
