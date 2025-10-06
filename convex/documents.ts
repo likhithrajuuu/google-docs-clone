@@ -4,34 +4,58 @@ import { v } from "convex/values";
 import { ConvexError } from "convex/values";
 
 export const create = mutation({
-  // The fix is here: `ownerId` has been removed from the arguments.
-  args: {
-    title: v.optional(v.string()),
-    initialContent: v.optional(v.string()),
-    roomId: v.optional(v.string()),
-    organisationId: v.optional(v.string()),
-  },
-  handler: async (ctx, args) => {
-    const user = await ctx.auth.getUserIdentity();
-    if (!user) {
-      throw new ConvexError("Unauthorized");
-    }
+    args: {
+        title: v.optional(v.string()),
+        initialContent: v.optional(v.string()),
+    },
+    handler: async (ctx, args) => {
+        const user = await ctx.auth.getUserIdentity();
+        if (!user) {
+            throw new ConvexError("Unauthorized");
+        }
 
-    const documentId = await ctx.db.insert("documents", {
-      title: args.title ?? "Untitled Document",
-      ownerId: user.subject, // The owner is set securely here on the backend.
-      initialContent: args.initialContent,
-      roomId: args.roomId,
-      organisationId: args.organisationId,
-    });
-    return documentId;
-  },
+        const organisationId = user.organization_id;
+
+        return await ctx.db.insert("documents", {
+            title: args.title ?? "Untitled Document",
+            ownerId: user.subject,
+            organisationId,
+            initialContent: args.initialContent ?? "",
+        });
+    },
 });
 
 export const get = query({
-    args : { paginationOpts : paginationOptsValidator},
-    handler: async (ctx, args) => {
-        return await ctx.db.query("documents").paginate(args.paginationOpts);
+    args : { paginationOpts : paginationOptsValidator, search: v.optional(v.string())},
+    handler: async (ctx, { search, paginationOpts }) => {
+        const user = await ctx.auth.getUserIdentity();
+        if(!user){
+            throw new ConvexError("Unauthorised");
+        }
+
+        const organizationId = (user.organization_id ?? undefined) as
+            | string
+            | undefined;
+
+        if(search && organizationId){
+            return await ctx.db
+                .query("documents")
+                .withSearchIndex("search_title", (q) => q.search("title", search).eq("organisationId", organizationId))
+                .paginate(paginationOpts)
+        }
+
+        if(search){
+            return await ctx.db
+                .query("documents")
+                .withSearchIndex("search_title", (q) => q.search("title", search).eq("ownerId", user.subject))
+                .paginate(paginationOpts);
+        }
+
+        if(organizationId){
+            return await ctx.db.query("documents").withIndex("by_organisation", (q) => q.eq("organisationId", organizationId)).paginate(paginationOpts);
+        }
+
+        return await ctx.db.query("documents").withIndex("by_owner_id", (q) => q.eq("ownerId", user.subject)).paginate(paginationOpts);
     },
 });
 

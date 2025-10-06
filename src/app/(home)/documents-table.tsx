@@ -9,19 +9,21 @@ import {
 } from "@/components/ui/table";
 import {LoaderIcon} from "lucide-react";
 import {DocumentRow} from "@/app/(home)/document-row";
+import {Button} from "@/components/ui/button";
 
 interface DocumentsTableProps {
-    documents: Doc<"documents">[] | "undefined";
+    documents: Doc<"documents">[] | undefined;
     loadMore: (numItems : number) => void;
     status: PaginationStatus;
 }
 export const DocumentsTable = ({
     documents,
-    // loadMore,
+    loadMore,
+    status
      } : DocumentsTableProps) => {
     return(
         <div className="max-w-screen-xl mx-auto px-16 py-6 flex flex-col">
-            {documents === "undefined" ? (
+            {documents === undefined ? (
                 <div className="flex justify-center items-center h-24">
                     <LoaderIcon className="animate-spin text-muted-foreground size-5 "/>
                 </div>
@@ -52,6 +54,11 @@ export const DocumentsTable = ({
                     )}
                 </Table>
             )}
+            <div className="flex items-center justify-center">
+                <Button variant="ghost" onClick={() => loadMore(5)} disabled={status !== "CanLoadMore"}>
+                    {status==="CanLoadMore" ? "Load More" : "End of Results"}
+                </Button>
+            </div>
         </div>
     )
 }
