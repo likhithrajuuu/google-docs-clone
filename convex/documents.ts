@@ -14,12 +14,12 @@ export const create = mutation({
             throw new ConvexError("Unauthorized");
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const organisationId = user.organization_id;
 
         return await ctx.db.insert("documents", {
             title: args.title ?? "Untitled Document",
             ownerId: user.subject,
-            organisationId,
             initialContent: args.initialContent ?? "",
         });
     },
