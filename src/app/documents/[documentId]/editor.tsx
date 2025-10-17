@@ -32,7 +32,7 @@ export const Editor = () => {
     onDestroy() {
       setEditor(null);
     },
-    onUpdate() {
+    onUpdate({ editor }) {
       setEditor(null);
     },
     onSelectionUpdate({ editor }) {

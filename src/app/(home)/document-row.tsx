@@ -17,9 +17,9 @@ export const DocumentRow = ({ document } : DocumentRowProps) => {
         window.open(`/documents/${document._id}`, "_blank");
     };
 
-    // const onRowClick = (id : string) => {
-    //     router.push(`/documents/${id}`);
-    // }
+    const onRowClick = (id : string) => {
+        router.push(`/documents/${id}`);
+    }
 
     return (
     <TableRow className="cursor-pointer" onClick={() => router.push(`/documents/${document._id}`)}>
