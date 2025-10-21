@@ -61,7 +61,10 @@ export const Editor = () => {
     },
     extensions: [
         liveBlocks,
-      StarterKit,
+      StarterKit.configure({
+          history: false,
+
+      }),
         Link.configure({
             openOnClick :false,
             autolink: true,
