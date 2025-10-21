@@ -20,10 +20,12 @@ import Highlight from "@tiptap/extension-highlight";
 import { useEditorStore } from "@/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { Ruler } from './ruler';
 
 export const Editor = () => {
-  const { setEditor } = useEditorStore();
+    const liveBlocks = useLiveblocksExtension();
+    const { setEditor } = useEditorStore();
   const editor = useEditor({
       immediatelyRender: false,
     onCreate({ editor }) {
@@ -58,6 +60,7 @@ export const Editor = () => {
       },
     },
     extensions: [
+        liveBlocks,
       StarterKit,
         Link.configure({
             openOnClick :false,

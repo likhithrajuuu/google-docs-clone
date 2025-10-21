@@ -68,13 +68,18 @@ export const removeById = mutation({
             throw new ConvexError("Unauthorized");
         }
 
+        const organizationId = (user.organization_id ?? undefined) as
+            | string
+            | undefined;
+
         const document = await ctx.db.get(args.id);
         if(!document){
             throw new ConvexError("Document Not Found");
         }
 
         const owner = document.ownerId === user.subject;
-        if(!owner){
+        const isOrganisationMember = document.organisationId === organizationId;
+        if(!owner && !isOrganisationMember){
             throw new ConvexError("UnAuthorised");
         }
 
